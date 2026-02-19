@@ -30,6 +30,35 @@
 # else:
 #     print(F"{years}不是闰年")
 
+#案例：判断一个数是偶数还是奇数
+number = int(input("Please enter a whole number: "))
+if number % 2 == 0:
+    print(f"{number} is an even number\n")
+else:
+    print(f"{number} is an odd nuymber\n")
+
+#案例：判断年龄是否成年
+age = int(input("Please enter your age: "))
+if age >=18:
+    print("You are an adult\n")
+else:
+    print("You are under age\n")
+
+#案例：判断正负数
+num = float(input("Please enter any number: "))
+if num >0:
+    print("It is a positive number\n")
+elif num <0:
+    print("It is a negative number\n")
+else:
+    print("It is zero\n")
+#案例：判断考试成绩
+grade = int(input("Enter your exam score: "))
+if grade >= 60:
+    print("Your are passed\n")  
+else:    
+    print("You are failed\n")  
+
 ####模式匹配
 
 ####循环
