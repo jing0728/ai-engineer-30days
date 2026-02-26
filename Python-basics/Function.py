@@ -177,7 +177,11 @@
 #     return oper(x,y)
 # print(calc(7,8,add))
 
-#匿名参数-lambda，可以简化简单函数的编写
-#lambda 参数列表：函数体
-add=lambda x,y:x+y
-print(add(2,4))
+# #匿名参数-lambda，可以简化简单函数的编写
+# #lambda 参数列表：函数体
+# add=lambda x,y:x+y
+# print(add(2,4))
+
+data_list=["c++","java","python","php","go","javascript"]
+data_list.sort(key=lambda item:len(item),reverse=True)#作为高级函数的调用使用
+print(data_list)
