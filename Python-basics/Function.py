@@ -167,12 +167,17 @@
 # data=calc_data(10,20,20,3,0,5,7,9,45)
 # print(data)
 
-#参数类型
-#特殊参数：函数
-def add(x,y):
-    return x+y
-def subtract(x,y):
-    return x-y
-def calc(x,y,oper):
-    return oper(x,y)
-print(calc(7,8,add))
+# #参数类型
+# #特殊参数：函数
+# def add(x,y):
+#     return x+y
+# def subtract(x,y):
+#     return x-y
+# def calc(x,y,oper):
+#     return oper(x,y)
+# print(calc(7,8,add))
+
+#匿名参数-lambda，可以简化简单函数的编写
+#lambda 参数列表：函数体
+add=lambda x,y:x+y
+print(add(2,4))
