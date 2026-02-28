@@ -194,10 +194,81 @@
 #     return result
 # print(calc(4))
 
-#递归调用：指的时函数中自己调用自己的情况--->一定要有终结点
-def calc(n):
-    if n==1:
-        return 1
+# #递归调用：指的时函数中自己调用自己的情况--->一定要有终结点
+# def calc(n):
+#     if n==1:
+#         return 1
+#     else:
+#         return n*calc(n-1)
+# print(calc(4))
+
+#案例
+"""
+定义一个函数，用于根据传入的一批商品信息（商品名、价格、数量）、优惠（优惠券、积分抵扣）、运费信息计算订单的总金额。
+
+具体规则如下：
+
+优惠券需要商品金额满5000才可以使用，且优惠券金额不能超过商品总价。
+
+积分抵扣需要商品总金额满5000才可以使用，100积分抵扣1元（且抵扣金额不能超过商品总价，积分只能整百抵扣）。
+"""
+# def amount(name, price, qty, coupon, discount, shipping_fee):
+#     subtotal = price * qty
+
+#     # ---------- 优惠券 ----------
+#     if subtotal >= 5000 and coupon <= subtotal:
+#         coupon_used = coupon
+#     else:
+#         coupon_used = 0
+#         print("⚠️ 优惠券无法使用")
+
+#     # ---------- 积分 ----------
+#     if subtotal >= 5000:
+#         points_money = (discount // 100)  # 整百抵扣
+#         points_money = min(points_money, subtotal)
+#     else:
+#         points_money = 0
+#         print("⚠️ 积分无法使用")
+
+#     # ---------- 总价 ----------
+#     total = subtotal - coupon_used - points_money + shipping_fee
+
+#     s = (
+#         f"商品名称是{name}，单价为{price}，数量为{qty}，运费为{shipping_fee}，"
+#         f"折前价格为{subtotal + shipping_fee}，优惠券为{coupon_used}，"
+#         f"积分一共是{discount}，积分抵扣金额是{points_money}，总金额是{total}"
+#     )
+
+#     return s
+
+def amount(*items:tuple[str,float,int],coupon=0,discounts=0,shipping_fee=0):
+    subtotal:float=sum(i[1]*i[2] for i in items)
+    # ---------- 优惠券 ----------
+    if subtotal >= 5000 and coupon <= subtotal:
+        coupon_used = coupon
     else:
-        return n*calc(n-1)
-print(calc(4))
+        coupon_used = 0
+        print("⚠️ 优惠券无法使用")
+
+    # ---------- 积分 ----------
+    if subtotal >= 5000:
+        points_money = (discounts // 100)  # 整百抵扣
+        points_money = min(points_money, subtotal)
+    else:
+        points_money = 0
+        print("⚠️ 积分无法使用")
+
+    total:float = subtotal - coupon_used - points_money + shipping_fee
+    names:str = [name for name, _, _ in items]
+    prices:float = [price for _, price, _ in items]
+    qtys:int = [qty for _, _, qty in items]
+
+    s = (
+        f"商品名称：{names}，单价：{prices}，数量：{qtys}，运费：{shipping_fee}，"
+        f"商品总价：{subtotal}，优惠券使用：{coupon_used}，"
+        f"积分：{discounts}，积分抵扣：{points_money}，总金额：{total}"
+    )
+    return s
+
+#类型注解：用于明确表示变量，函数和返回值的数据类型,从而使代码更加规范和容易修改
+# total:float | int = subtotal - coupon_used - points_money + shipping_fee#|用来代替or
