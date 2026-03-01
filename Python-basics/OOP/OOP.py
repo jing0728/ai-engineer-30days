@@ -39,3 +39,6 @@
         print("颜色：%s"% car.color)
         print("轮胎数：%d"%car.number)
 """
+
+####魔法方法
+#__init__():在python中，当新创建一个对象时，则会自动触发__int__()魔法方法
