@@ -18,7 +18,6 @@ class Car:
     def run(self):
         print("Car can run")
         print(f"I am run function,self is {self}")
-        self.run
 
 #2.创建汽车类的对象
 car = Car()
