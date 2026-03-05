@@ -104,3 +104,21 @@ def get_sum():
 
 get_sum()
 
+#案例：定义可变参数的get_sum()求和函数，在不改变其代码的基础上，添加友好提示：
+def notice(func):
+    def fn_inner(*args,**kwargs): #*args-接收所有“位置参数”-->并且会被打包成一个 tuple（元组）  #**kwargs -接收所有“关键字参数”-->并且会被打包成 dict（字典）
+        print("正在努力计算中...")
+        return func(*args,**kwargs)
+    return fn_inner
+
+@notice
+def get_sum(*args,**kwargs):
+    # sum=0
+    # for i in args:
+    #     sum+=i
+    # for key in kwargs.values():
+    #     sum+=key
+    return sum(args)+sum(kwargs.values())
+
+sum=get_sum(1,2,3,4,a=2,b=9,v=8)
+print(sum)
